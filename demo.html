@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        var a=10
+        var a=20
+
+        console.log(a);
+
+        let b=20  
+            b=30
+        
+        console.log(b);
+
+        const c=50
+            //  c=100
+
+        console.log(c);        
+
+        const person={
+            name:'John',
+            city:'Pune'
+        }      
+
+        const person1={
+
+            age:25,
+            email:'abc@gmail.com'
+        }
+
+// Spread Operator , REST parameter
+
+        person1.name=person.name
+        person1.city=person.city
+       // person.email='abc@gmail.com'
+
+        console.log(person1);  
+
+        // hoisting
+     //   display()  
+
+        // function display(name='Peter'){
+        //     console.log('Hello, '+name);
+        // }
+
+        // display()   
+        
+     //   display('John')
+
+        // function expression
+        // let display=function(name){
+        //     console.log('Hello, '+name);
+        // }
+
+        // display('John')
+       // console.log(display('John'));
+
+       //arrow functions -> fat arrow
+        // let display=(name)=>{
+        //     console.log('Hello, '+name);
+        // }
+
+        // display('Peter')
+
+        // for(let i=0;i<5;i++){
+        //     console.log(i);
+        // }
+        // console.log(i);
+
+        //template literal
+        let x=10
+        let y=20
+        let result=x+y 
+        console.log(`addition of ${x} and ${y} is ${result}`);
+        //addition of 10 and 20 is 30
+
+        // REST Parameter (...)
+
+        // function displayNames(...name){
+        //     return names
+        // }
+
+        // console.log(displayNames('John','Peter','Richard'));
+
+        // Spread Operator (...)
+
+        let fruits=['Apple','Orange','Grapes']
+        let fruits1=['Pine Apple','Strawberry']
+
+        let allFruits=[...fruits,...fruits1,'Pomegranate']
+        console.log(allFruits);
+
+// Closures, Callback, Promises, Async await
+
+        function OuterFunction(){
+
+            let value=100
+            console.log('Outer function value: '+value);
+
+            function innerFunction(){
+                console.log(value);
+            }
+
+            return innerFunction
+
+         //   innerFunction()
+        }
+        
+       const innerFunctionCall=OuterFunction()
+       innerFunctionCall()
+
+// Callback : function passed as an argument to another function
+
+    //    function demo1(name,callback){
+    //         console.log('In demo1!!!');    
+    //         callback(name)
+    //    }
+
+    //    function demo2(name){
+    //         console.log('Hello, '+name);
+    //    }
+    //    setTimeout(demo1, 3000,'Peter',demo2)
+      // setTimeout(demo1,2000)
+      // demo2('John')
+
+     // synchronous and asynchronous
+     
+
+     // call api -> 1
+     // display table -> 2
+
+     // promises : 3 states --> pending, fulfill/complete, rejected
+
+      let isProductActive=true
+
+      // Promise creation
+      let displayProductInfo=new Promise(
+          function(resolve,reject){
+              if(isProductActive){
+                  let product={
+                      productName:'Mobile',
+                      price:25000,
+                      color:'Black'
+                  }
+                  resolve(product) //fulfilled
+              }else{
+                  let rejectReason=new Error('Product is not Available')
+                  reject(rejectReason)
+              }
+          }
+      )
+
+      // consuming promise
+    //   let checkProduct=()=>{
+
+    //      console.log('Hiiiiiiiii');
+
+    //       displayProductInfo  // call to Promise
+    //       .then(fulfilled=>{
+    //           console.log(fulfilled);
+    //       })
+    //       .catch(error=>{
+    //           console.log(error.message);
+    //       })
+
+    //       console.log('Hellooooooo');
+    //   }    
+
+    let checkProduct=async()=>{
+
+        console.log('Hiiiiiiiii');
+        try{
+        let product=await displayProductInfo
+        console.log(product);
+         }catch(error){
+             console.log(error.message);
+         }
+
+        console.log('Hellooooooo');
+    }    
+
+      checkProduct()
+
+
+     
+    </script>
+</body>
+</html>
